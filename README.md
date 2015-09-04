@@ -1,6 +1,15 @@
 # zimbra-scripts
 Scripts for zimbra
 
+## mailbox_size.sh
+Script to print all mailboxes with: name quota size and last login time
+
+### Manual
+Edit and configure the server:
+
+ 	SERVER=localhost
+ 
+
 ## delete_domains.sh
 Script to delete one or severals domains, starting by accounts, calendar ressources and finaly distribution list.
 
