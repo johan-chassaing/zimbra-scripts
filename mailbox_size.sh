@@ -52,14 +52,21 @@ SERVER=localhost
 
 echo "account quota size lastlogin"
 
+# show all account quota size and last connection
 zmprov gqu ${SERVER} | while read line
 do
-#for accountInfo in $data; do
   account=`echo $line | cut -f1 -d " "`
   quota=`echo $line | cut -f2 -d " "`
   size=`echo $line | cut -f3 -d " "`
-  lastLogonTime=$(zmprov --server ${SERVER} ga $account | grep -i zimbraLastLogonTimestamp | awk '{print $2}' )
 
-  echo "$account $quota $size ${lastLogonTime:0:8}"
+  #get account last connection
+  lastLogonTime=$(zmprov --server ${SERVER} ga $account | grep -i zimbraLastLogonTimestamp | awk '{print $2}' )
+  if [ "$lastLogonTime" = "" ]; then
+    lastLogonStatus="0"
+  else
+    lastLogonStatus=${lastLogonTime:0:8}
+  fi
+
+  echo "$account $quota $size $lastLogonStatus"
 done
   
