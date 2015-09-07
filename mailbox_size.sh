@@ -60,7 +60,7 @@ do
   size=`echo $line | cut -f3 -d " "`
 
   #get account last connection
-  lastLogonTime=$(zmprov --server ${SERVER} ga $account | grep -i zimbraLastLogonTimestamp | awk '{print $2}' )
+  lastLogonTime=$(zmprov --server ${SERVER} ga $account | grep -i "zimbraLastLogonTimestamp:" | awk '{print $2}' )
   if [ "$lastLogonTime" = "" ]; then
     lastLogonStatus="0"
   else
