@@ -33,3 +33,19 @@ Dry run mode
 Delete mode
 
 	# delete_domains.sh -d
+
+## user_as_csv.sh
+Script to export zimbra accounts information as CSV.
+
+### Manual
+Edit and configure the domains list:
+
+        #One domain
+        DOMAINS=( domain1 )
+        #Severals domain:
+        DOMAINS=( domain1 domain2 )
+
+Launch and save
+
+        # user_as_csv.sh
+        # user_as_csv.sh > /tmp/users.csv
