@@ -41,7 +41,7 @@ DOMAINS=( domain1 domain2 domain3 )
 # parse domains
 for domain in ${DOMAINS[@]} ; do
 
-    for a in `cat /tmp/mngaccounts.txt`; do
+    for a in $( zmprov -l gaa ${domain} ); do 
 
         accountinfo=$(zmprov ga $a)
         lastname=$(echo "$accountinfo" | grep "sn:" | awk -F": " '{print $2}' )
